@@ -1,0 +1,66 @@
+/* Pre made CSS */
+.App {
+  text-align: center;
+  background-color: #4cf075 ;
+  height: 100vh;
+  overflow: hidden;
+}
+/* Changed .App to have height and a background */
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+.App-header {
+  background-color: #cdd48f;
+  min-height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+.App-link {
+  color: #61dafb;
+}
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* Custom CSS */
+.Sign-N-Log{
+  padding-top: 3%;
+  display:flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+}
+.Log{
+  margin: 6% auto;
+  width: 12%;
+  padding:1% 5%;
+  background-color:#f7f7f7b6 ;
+  border-radius: 10px;
+}
+.Sign{
+  margin: 6% auto;
+  width: 12%;
+  padding:1% 5%;
+  background-color: #f7f7f7b6;
+  border-radius: 10px;
+}
+.nav-links {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  text-decoration: none;
+  color:rgb(0, 0, 0);
+}
