@@ -6,9 +6,13 @@ import Login from "./Components/Login";
 import CreatePlant from "./Components/CreatePlant";
 import Welcome from "./Components/Welcome";
 import { Link, Switch, Route } from "react-router-dom";
+import Dashboard from './Components/Dashboard';
+
 function App() {
+
   return (
-  <div className="App">
+
+   <div className="App">
     <nav className='navi'>
      <h1 className="PQ-header">  Plant Quencher  </h1>
       <div className="nav-links">
@@ -17,17 +21,18 @@ function App() {
           <Link className='nav-links' to="/login"> Log In</Link>
       </div>
    </nav>
-        {/* <div className='Sign'> <SignUp/>  </div>
-        <div className='Log'> <Login/> <br></br> <a href='https://soundcloud.com/v-hines'>Forgot Password?</a> </div>
-     */}
+
       <Switch>
+        
         <Route exact path="/" component= {Welcome}/>
-        <Route exact path="/SignUp"> <SignUp /> </Route>
-        <Route exact path="/Login"> <Login /> </Route>
+        <Route exact path="/SignUp" component={SignUp}/> 
+        <Route exact path="/Login" component={Login}/>
+        <Route exact path="/dashboard" component={Dashboard}/>
         <Route path="/Log/:plantID">  </Route>
       </Switch>
       {/* <CreatePlant /> */}
     </div>
+
   );
 }
 export default App;

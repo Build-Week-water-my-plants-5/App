@@ -1,71 +1,67 @@
-import React, { useState, useEffect } from "react";
-import { withFormik, Form, Field } from "formik";
-import * as Yup from "yup";
+import React from 'react';
 import axios from "axios";
-const LoginForm = ({ values, errors, touched, status }) => {
-  const [users, setUsers] = useState([]);
-  useEffect(() => {
-    console.log("status has changed", status);
-    status && setUsers(users => [...users, status]);
-  }, [status]);
-  return (
-    <div className="form">
-      <Form className="Log">
-        <h1 className="login">Login</h1>
-        <div className="loginLabels">
-        <label htmlFor="name">
-          Name
-          <Field id="name" type="text" name="name" placeholder="Your name" />
-          {touched.name && errors.name && (
-            <p className="errors">{errors.name}</p>
-          )}
-        </label>
-        <label htmlFor="number">
-          Phone Number
-          <Field id="number" type="text" name="number" placeholder="Your phone number" />
-          {touched.number && errors.number && (
-            <p className="errors">{errors.number}</p>
-          )}
-        </label>
-        <label htmlFor="password">
-          Password
-          <Field id="password" name="password" placeholder="Enter password"/>
-          {touched.password && errors.password && (
-            <p className="errors">{errors.password}</p>
-          )}
-        </label>
-        </div>
-        <button type="submit">Login</button>
-        <br></br>
-        <br></br>
-        <a href="https://soundcloud.com/v-hines"> Forgot Password?</a>
-      </Form>
-    </div>
-  );
-};
-const FormikUserForm = withFormik({
-  mapPropsToValues(props) {
-    return {
-      name: props.name || "",
-      number: props.number || "",
-      password: props.password || "",
-    };
-  },
-  validationSchema: Yup.object().shape({
-    name: Yup.string().required("Please enter your name"),
-    number: Yup.number().required("Please enter your number"),
-    password: Yup.string().required("Please enter your password")
-  }),
-  handleSubmit(values, { setStatus, resetForm }) {
-    console.log("submitting", values);
+
+class Login extends React.Component {
+  state = {
+    credentials: {
+      username: '',
+      password: ''
+    }
+  };
+
+  handleChange = e => {
+    this.setState({
+      credentials: {
+        ...this.state.credentials,
+        [e.target.name]: e.target.value
+      }
+    });
+  };
+
+  login = e => {
+    e.preventDefault();
+    // Make a POST request and send the credentials object to the api
     axios
-      .post("https://reqres.in/api/users/", values)
+      .post('https://wmpbackend.herokuapp.com/api/auth/login', this.state.credentials)
       .then(res => {
-        console.log("success", res);
-        setStatus(res.data);
-        resetForm();
+        window.localStorage.setItem('token', res.data.payload);
+        // navigate the user to /protected (whatever landing page)
+        this.props.history.push('/dashboard');
       })
-      .catch(err => console.log(err.response));
+      .catch(err => console.log(err));
+  };
+
+  render() {
+    return (
+      <div className="Log">
+        <form onSubmit={this.login}>
+          <h3>Log In!</h3>
+
+          <label>
+            Username
+          <input
+            type="text"
+            placeholder=" Enter Username"
+            name="username"
+            value={this.state.credentials.username}
+            onChange={this.handleChange}
+          />
+          
+          Password
+          <input
+            type="text"
+            placeholder="Enter Pssword"
+            name="password"
+            value={this.state.credentials.password}
+            onChange={this.handleChange}
+          />
+          <input type="submit" value="Go!"/>
+          </label>
+          
+        </form>
+      </div>
+    );
   }
-})(LoginForm);
-export default FormikUserForm;
+}
+
+export default Login;
