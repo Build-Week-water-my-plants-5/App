@@ -44,6 +44,14 @@
 
 
 /* Custom CSS */
+.btn{
+  background-color:#d4d4d4e7;
+  border: 3px;
+  border-color: white;
+  border-radius: 3px;
+  width: 100%;
+  padding:0% 5%;
+}
 .Sign-N-Log{
   padding-top: 3%;
   display:flex;
@@ -54,21 +62,21 @@
   margin: 6% auto;
   width: 12%;
   padding:1% 5%;
-  background-color:#d4d3d3b6;;
+  background-color:#d4d3d3b6;
   border-radius: 10px;
 }
 .Sign{
   margin: 6% auto;
   width: 12%;
   padding:1% 5%;
-  background-color: #d4d3d3b6;;
+  background-color: #d4d3d3b6;
   border-radius: 10px;
 }
 .welcome-page{
   margin: 6% auto;
   width: 12%;
   padding:1% 5%;
-  background-color: #d4d3d3b6;;
+  background-color: #d4d3d3b6;
   border-radius: 10px;
 }
 .Dash{

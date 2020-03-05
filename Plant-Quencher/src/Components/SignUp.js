@@ -1,19 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { withFormik, Form, Field } from "formik";
-import * as Yup from "yup";
-import axios from "axios";
+import React, { useState } from "react";
+import { TextField, Button } from '@material-ui/core';
+import { registerUser } from '../actions'
+import { connect } from 'react-redux';
 
 
-const SignUp = () => {
+
+const SignUp = (props) => {
 
  const [ user, setUser] = useState({
    credentials: {
      username: '',
-     password: ''
+     password: '',
+     phone: '',
+     email: ''
    },
  });
   
- const handleChange = e => {
+ const handleChanges = e => {
    setUser({
      credentials: {
        ...user.credentials,
@@ -22,164 +25,73 @@ const SignUp = () => {
    });
  };
 
-  // --------------------------------------
-  //  Sign up axios accept... oh god.. 
-  // ----------------------------------------
-
-      // signup = e => {
-      //   e.preventDefault();
-      //   axios
-      //      .post('https://wmpbackend.herohuapp.com/api/auth/register', this.state.credentials)
-      //      .then(res => {
-      //        window.localStorage.push('/dashboard');
-      //      })
-      //      .catch(err => console.log(err));
-      // };
-
-
-
-  // ---------------------------------------
-  // ---------------------------------------
+ const handleSubmit = e => {
+  e.preventDefault();
+  console.log(user);
+  registerUser(user);
+  props.history.push('/login');
+};
 
     return (
         <div className="Sign"> 
-        <form>
-        {/* <form onSubmit={this.signup}> */}
-        <h1> Make an account </h1>
+        <h1>Post Here 2!</h1>
+      <h3>Please Register Below:</h3>
+      <form onSubmit={handleSubmit}>
+      <TextField
+        variant="filled"
+        color="secondary"
+        id="username-input"
+        label="Username"  //<- Label is capitialized for the placeholder - the credential itself is lowercase 
+        type="username"
+        name="username"
+        value={user.credentials.username}
+        onChange={handleChanges}
+       />
         
-        <label>
-            Username
-          <input
-           type="text"
-           placeholder="Enter Username"
-           name="username"
-          //  value={this.state.credentials.username}
-          //  onChange={this.handleChange}
-          />
-          
-          Password
-          <input
-           type="text"
-           placeholder="Enter Pssword"
-           name="password"
-          //  value={this.state.credentials.password}
-          //  onChange={this.handleChange}
-           />
+      <TextField
+        variant="filled"
+        color="secondary"
+        id="password-input"
+        label="Password"  //<- Label is capitialized for the placeholder - the credential itself is lowercase 
+        type="password"
+        name="password"
+        value={user.credentials.password}
+        onChange={handleChanges}
+     />
 
-          Number
-          <input
-           type="text"
-           placeholder="Enter Number"
-           name="number"
-          //  value={this.state.credentials.number}
-          //  onChange={this.handleChange}
-          />
+      <TextField
+        variant="filled"
+        color="secondary"
+        id="phone-input"
+        label="Phone"  //<- Label is capitialized for the placeholder - the credential itself is lowercase 
+        type="phone"
+        name="phone"
+        value={user.credentials.phone}
+        onChange={handleChanges}
+     />
 
-          Email
-          <input
-          type="text"
-          placeholder=" Enter Email"
-          name="email"
-          // value={this.state.credentials.email}
-          // onChange={this.handle}
-          />
+      <TextField
+        variant="filled"
+        color="secondary"
+        id="email-input"
+        label="Email" //<- Label is capitialized for the placeholder - the credential itself is lowercase 
+        type="email"
+        name="email"
+        value={user.credentials.email}
+        onChange={handleChanges}
+     />
 
-          <input type="submit" value="Create Account"/>
+      <Button
+        variant="contained"
+        color="secondary"
+        type="submit"
+        >
+          Register
+      </Button>
 
-          </label>
-
-
-
-        </form>
+      </form>
         </div>
     )
 }
 
-export default SignUp;
-
-
-
-
-
-// const UserForm = ({ values, errors, touched, status }) => {
-//   const [users, setUsers] = useState([]);
-//   useEffect(() => {
-//     console.log("status has changed", status);
-//     status && setUsers(users => [...users, status]);
-//   }, [status]);
-//   return (
-//     <div className="form">
-//       <Form className="Sign">
-//         <h1 className="signup">Sign Up</h1>
-//         <div className="signupLabels">
-//         <label htmlFor="name">
-//           Name
-//           <Field id="name" type="text" name="name" placeholder="Your name" />
-//           {touched.name && errors.name && (
-//             <p className="errors">{errors.name}</p>
-//           )}
-//         </label>
-//         <label htmlFor="number">
-//           Phone Number
-//           <Field id="number" type="text" name="number" placeholder="Your phone number" />
-//           {touched.number && errors.number && (
-//             <p className="errors">{errors.number}</p>
-//           )}
-//         </label>
-//         <label htmlFor="password">
-//           Password
-//           <Field id="password" type="text" name="password" placeholder="Enter password"/> 
-//           {touched.password && errors.password && (
-//             <p className="errors">{errors.password}</p>
-//           )}
-//         </label>
-//         <label htmlFor="repassword">
-//           Repeat Password
-//         <Field id="repassword" type="text" name="repassword" placeholder="Repeat Password" />
-//           {touched.repassword && errors.repassword && (
-//             <p className="errors">{errors.repassword}</p>
-//           )}
-//         </label>
-//         </div>
-//         {/* <div className="termsBox">
-//           <Field type="checkbox" name="terms" checked={values.terms} />
-//           <span className="checkmark" />
-//           <p>By checking this box, you agree to our Terms of Service.</p>
-//         </div> */}
-//         <button type="submit">Sign Up</button>
-//       </Form>
-//     </div>
-//   );
-// };
-
-// const FormikUserForm = withFormik({
-//   mapPropsToValues(props) {
-//     return {
-//       name: props.name || "",
-//       password: props.password || "",
-//       repassword: props.repassword || "",
-//       number: props.number || "",
-//     };
-//   },
-//   // Declare shape and requirement of values object (form state )
-//   validationSchema: Yup.object().shape({
-//     // passing a string in required makes a custom inline error msg
-//     name: Yup.string().required("Create Username"),
-//     password: Yup.string().required("Create Password"),
-//     repassword: Yup.string().required("Re-Enter Password"),
-//     number: Yup.string().required("Enter Phone Number")
-//   }),
-//   handleSubmit(values, { setStatus, resetForm }) {
-//     console.log("submitting", values);
-//     axios
-//       .post("https://reqres.in/api/users/", values)
-//       .then(res => {
-//         console.log("success", res);
-//         setStatus(res.data);
-//         resetForm();
-//       })
-//       .catch(err => console.log(err.response));
-//   }
-// })(UserForm);
-
-// export default FormikUserForm;
+export default connect()(SignUp);

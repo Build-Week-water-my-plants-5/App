@@ -16,9 +16,9 @@ function App() {
     <nav className='navi'>
      <h1 className="PQ-header">  Plant Quencher  </h1>
       <div className="nav-links">
-          <Link className="nav-links" to="/"> Home </Link>
-          <Link className="nav-links" to="/SignUp"> SignUp </Link>
-          <Link className='nav-links' to="/login"> Log In</Link>
+          <Link className="nav-links" to="/"> <h4 className="btn"> Home  </h4></Link>
+          <Link className="nav-links" to="/SignUp"> <h4 className="btn"> SignUp </h4></Link>
+          <Link className='nav-links' to="/login"> <h4 className="btn"> Log In </h4> </Link>
       </div>
    </nav>
 
