@@ -41,6 +41,8 @@
     transform: rotate(360deg);
   }
 }
+
+
 /* Custom CSS */
 .Sign-N-Log{
   padding-top: 3%;
@@ -52,21 +54,28 @@
   margin: 6% auto;
   width: 12%;
   padding:1% 5%;
-  background-color:#f7f7f7b6 ;
+  background-color:#d4d3d3b6;;
   border-radius: 10px;
 }
 .Sign{
   margin: 6% auto;
   width: 12%;
   padding:1% 5%;
-  background-color: #a3a3a3b6;
+  background-color: #d4d3d3b6;;
+  border-radius: 10px;
+}
+.welcome-page{
+  margin: 6% auto;
+  width: 12%;
+  padding:1% 5%;
+  background-color: #d4d3d3b6;;
   border-radius: 10px;
 }
 .Dash{
   margin: 6% auto;
   width: 30%;
   padding:1% 5%;
-  background-color: #a3a3a3b6;
+  background-color: #d4d3d3b6;
   border-radius: 10px;
 }
 .nav-links {
@@ -76,3 +85,5 @@
   text-decoration: none;
   color:rgb(0, 0, 0);
 }
+
+
