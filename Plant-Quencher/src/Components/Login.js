@@ -1,6 +1,10 @@
 import React from 'react';
 import axios from "axios";
 
+// LOGIN - The login page is use a CLASS COMPONENT 
+// This page does not have outside actions or reduce
+// for future reference try using class components on things like card components.
+
 class Login extends React.Component {
   state = {
     credentials: {
