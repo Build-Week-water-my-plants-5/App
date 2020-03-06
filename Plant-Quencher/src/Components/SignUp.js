@@ -28,14 +28,14 @@ const SignUp = (props) => {
  const handleSubmit = e => {
   e.preventDefault();
   console.log(user);
-  registerUser(user);
+  props.registerUser(user);
   props.history.push('/login');
 };
 
     return (
         <div className="Sign"> 
-        <h1>Post Here 2!</h1>
-      <h3>Please Register Below:</h3>
+        <h1>Quench Better</h1>
+      <h2>Register Below:</h2>
       <form onSubmit={handleSubmit}>
       <TextField
         variant="filled"
@@ -86,7 +86,7 @@ const SignUp = (props) => {
         color="secondary"
         type="submit"
         >
-          Register
+          Sign Up!
       </Button>
 
       </form>
@@ -94,4 +94,14 @@ const SignUp = (props) => {
     )
 }
 
-export default connect()(SignUp);
+
+const mapStateToProps = state => {
+  return {
+
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { registerUser }
+  )(SignUp);

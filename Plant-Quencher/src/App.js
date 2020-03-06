@@ -8,6 +8,8 @@ import Welcome from "./Components/Welcome";
 import { Link, Switch, Route } from "react-router-dom";
 import Dashboard from './Components/Dashboard';
 
+import { TextField, Button } from '@material-ui/core';
+
 function App() {
 
   return (
@@ -16,9 +18,9 @@ function App() {
     <nav className='navi'>
      <h1 className="PQ-header">  Plant Quencher  </h1>
       <div className="nav-links">
-          <Link className="nav-links" to="/"> <h4 className="btn"> Home  </h4></Link>
-          <Link className="nav-links" to="/SignUp"> <h4 className="btn"> SignUp </h4></Link>
-          <Link className='nav-links' to="/login"> <h4 className="btn"> Log In </h4> </Link>
+          <Link className="nav-links" to="/"> <Button variant="contained" color="secondary" type="submit"> Home  </Button></Link>
+          <Link className="nav-links" to="/SignUp"> <Button variant="contained" color="secondary" type="submit">  SignUp </Button></Link>
+          <Link className='nav-links' to="/login"> <Button variant="contained" color="secondary" type="submit">  Log In </Button></Link>
       </div>
    </nav>
 
@@ -36,3 +38,13 @@ function App() {
   );
 }
 export default App;
+
+
+
+{/* <Button
+variant="contained"
+color="secondary"
+type="submit"
+>
+  Sign Up!
+</Button> */}

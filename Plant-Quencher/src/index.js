@@ -16,7 +16,6 @@ import { reducer } from './reducers'
 // ------------ Store VVVVV ------------------------------
 
 const store = createStore(reducer, applyMiddleware(thunk, logger));
-
 const rootElement = document.getElementById("root");
 ReactDOM.render(
   <Provider store={store}>  
@@ -25,13 +24,5 @@ ReactDOM.render(
     </Router>
   </Provider>,
 rootElement);
-
-
-
-
-
-
-
-
 
 // picmetric redux persist line 14-finish
