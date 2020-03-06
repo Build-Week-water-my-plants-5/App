@@ -3,14 +3,12 @@ const initialState = {
     isLoading: false,
     activity: null,
     error: null,
-    posts: null,
-    subreddit: null,
+    garden: null,
     user: {
       username: '',
       password: '',
       phone: '',
       email: '',
-      garden: '',
     }
   };
   
@@ -48,6 +46,35 @@ export const reducer = (state = initialState, action) => {
             isLoading: false,
         }
     };
+    // ////////////////////////////////////////////
+    // ---------- Case Set for Garden
+    // case 'GET_USER_POSTS_SUCCESS':
+    //     console.log('inside reducer: ', action.payload)
+    //     if(action.payload) {
+    //       return {
+    //         ...state,
+    //         isLoading: false,
+    //         error: null,
+    //         user: {
+    //           ...state.user,
+    //           garden: action.payload
+    //         }
+    //       }
+    //     } else if(state.user.garden.length > 0){
+    //       return {
+    //         ...state,
+    //         isLoading: false,
+    //         error: null,
+    //       } 
+    //     } else {
+    //       return {
+    //         ...state,
+    //         isLoading: false,
+    //         error: null,
+    //       }
+    //     };
+
+// ///////////////////////
 
 
 
