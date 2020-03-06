@@ -10,6 +10,7 @@ import Dashboard from './Components/Dashboard';
 
 import { TextField, Button } from '@material-ui/core';
 
+import {PrivateRoute} from "./Components/PrivateRoute";
 function App() {
 
   return (
@@ -29,7 +30,7 @@ function App() {
         <Route exact path="/" component= {Welcome}/>
         <Route exact path="/SignUp" component={SignUp}/> 
         <Route exact path="/Login" component={Login}/>
-        <Route exact path="/dashboard" component={Dashboard}/>
+        <PrivateRoute exact path="/dashboard" component={Dashboard}/>
         <Route path="/Log/:plantID">  </Route>
       </Switch>
       {/* <CreatePlant /> */}
@@ -41,10 +42,3 @@ export default App;
 
 
 
-{/* <Button
-variant="contained"
-color="secondary"
-type="submit"
->
-  Sign Up!
-</Button> */}
