@@ -41,10 +41,3 @@ export default App;
 
 
 
-{/* <Button
-variant="contained"
-color="secondary"
-type="submit"
->
-  Sign Up!
-</Button> */}

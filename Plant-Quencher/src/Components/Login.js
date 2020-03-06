@@ -70,27 +70,7 @@ class Login extends React.Component {
         >
           Login
       </Button>
-{/* 
-<TextField
-        variant="filled"
-        color="secondary"
-        id="username-input"
-        label="Username"  //<- Label is capitialized for the placeholder - the credential itself is lowercase 
-        type="username"
-        name="username"
-        value={user.credentials.username}
-        onChange={handleChanges}
-       /> */}
-{/*           
-          Password
-          <input
-            type="text"
-            placeholder="Enter Pssword"
-            name="password"
-            value={this.state.credentials.password}
-            onChange={this.handleChange}
-          />
-          <input type="submit" value="Go!"/> */}
+
           </label>
           
         </form>
